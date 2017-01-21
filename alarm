@@ -1,0 +1,60 @@
+import winsound, os, time
+
+def sound(user_rep,user_delay):
+    for i in range(user_rep):
+        winsound.MessageBeep(-1)
+        time.sleep(user_delay)
+
+def alarm(n, user_rep, user_delay):
+    print("Wait time", n, "seconds")
+    time.sleep(n)
+    sound(user_rep, user_delay)
+
+def input_destination(format_of_time, user_input, user_rep, user_delay):
+    if format_of_time == '3':
+        wait_time = (user_input * 60) * 60
+        alarm(wait_time, user_rep, user_delay)
+
+    elif format_of_time == '2':
+
+        wait_time = user_input * 60
+        alarm(wait_time, user_rep, user_delay)
+
+    elif format_of_time == '1':
+
+        wait_time = user_input
+        alarm(wait_time, user_rep, user_delay)
+
+    elif format_of_time == '4':
+
+        hours = int(input("Hours: "))
+        minutes = int(input("Minutes: "))
+        seconds = int(input("Seconds: "))
+        print(wait_time)
+        alarm(wait_time, user_rep, user_delay)
+
+    else:
+
+        try:
+            os.system('cls')  # If OS is Windows
+            main()
+
+        except:
+            os.system('clear')  # If OS is Linux or Mac
+            main()
+
+
+def main():
+    print("Enter the time of alarm in:")
+    print("(1). Seconds")
+    print("(2). Minutes")
+    print("(3). Hours")
+    print("(4). Combination")
+    format_of_time = input(": ")
+    user_input = int(input("Enter the desired time : "))
+    input_rep = int(input("How many times you want it to snooze: "))
+    input_delay = int(input("Interval between snooze? : "))
+    input_destination(format_of_time, user_input, input_rep, input_delay)
+
+
+main()
